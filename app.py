@@ -32,16 +32,30 @@ def index():
 
 @app.route("/quotes")
 def quotes():
+
+ # total # scraped
+ # quotes: 
+ #      text:
+ #      author name
+ #      tags   
     session = Session(engine)
-    results = session.query(Quotes.quote).all()
+    results = session.query(Quotes.quote).count()
     return jsonify(quotes=quotes)
 
     session.close()
 
 
-# list author name
 @app.route("/authors")
 def authors():
+#total # scraped
+# details:
+    # name:
+    # description
+    # born
+    # count: total # of quotes by this author
+    # quotes:
+        # text
+        # tags
     session = Session(engine)
     results = session.query(Quotes.author).all()
     return jsonify(authors=authors)
@@ -52,13 +66,27 @@ def authors():
 
 @app.route("/authors/< author name >")
 def author_name():
+#name
+#description
+#born
+# # of quotes
+# quotes:
+    # text:
+    # tags:
     session = Session(engine)
-# author info?
+
     session.close()
 
-# list tags
+
 @app.route("/tags")
 def tags():
+# count
+# details:
+    # name
+    # # of quotes
+    # quotes:
+        #text: 
+        # tags:
     session = Session(engine)
     results = session.query(Quotes.tags).all()
     return jsonify(tags=tags)
@@ -69,6 +97,11 @@ def tags():
 
 @app.route("/tags/< tag >")
 def index():
+    # tag:
+    # count: # of quotes this tag appears in
+    # quote:
+        #quote
+        # tags
     session = Session(engine)
 
     session.close()
@@ -77,8 +110,9 @@ def index():
 
 @app.route("/top10tags")
 def top_tags():
+# tag
+# quote count
     session = Session(engine)
-# list top 10 tags
 
     session.close()
 
